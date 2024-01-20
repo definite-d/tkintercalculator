@@ -1,6 +1,6 @@
 """
 Tkinter Calculator Implementation with Python
-Copyright © 2024 Divine Afam-Ifediogor
+Copyright (c) 2024 Divine Afam-Ifediogor
 
 This code contains my implementation and explanations of a basic Calculator App in Tkinter, 
 a GUI toolkit for Python. Please refer to the repository for this at 
@@ -9,15 +9,20 @@ https://github.com/definite-d/tkintercalculator for the latest version and updat
 
 # First, imports
 from ctypes import windll
-from platform import platform
-from tkinter import Tk, StringVar, RIGHT, E, TclError
+from platform import platform, version
+from tkinter import RIGHT, E, StringVar, TclError, Tk
 from tkinter.ttk import Button, Label
 
-# This code is to make the window appear sharp on Windows 7 and upwards.
-if platform().startswith("Windows-7"):
-    windll.user32.setProcessDPIAware()
-elif platform().startswith("Windows-10"):
-    windll.shcore.SetProcessDpiAwareness(1)
+# Next, the version constant for this project.
+VERSION = "1.0.0"
+
+# This code is to make the window appear with the proper DPI on Windows 7 and upwards.
+if platform().startswith("Windows"):
+    _version = int(version().split(".")[0])
+    if _version == 7:
+        windll.user32.setProcessDPIAware()
+    elif _version >= 10:
+        windll.shcore.SetProcessDpiAwareness(1)
 
 # Next, we set up the root Tk instance.
 root = Tk()
