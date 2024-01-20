@@ -3,4 +3,5 @@
 /workspace.xml
 /.idea/
 /.vscode/
-/tkintercalculator.gif
+/main.dist
+nuitka-compile-script.bat
