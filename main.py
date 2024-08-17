@@ -8,7 +8,6 @@ https://github.com/definite-d/tkintercalculator for the latest version and updat
 """
 
 # First, imports
-from ctypes import windll
 from platform import platform, version
 from tkinter import RIGHT, E, StringVar, TclError, Tk
 from tkinter.ttk import Button, Label
@@ -18,6 +17,8 @@ VERSION = "1.0.0"
 
 # This code is to make the window appear with the proper DPI on Windows 7 and upwards.
 if platform().startswith("Windows"):
+    # windll is only available on Windows.
+    from ctypes import windll
     _version = int(version().split(".")[0])
     if _version == 7:
         windll.user32.setProcessDPIAware()
